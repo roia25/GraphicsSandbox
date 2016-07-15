@@ -1,4 +1,4 @@
-#include "../Graphics/GraphicsEngine.h"
+#include <Graphics/GraphicsEngine.h>
 
 int main(void)
 {  

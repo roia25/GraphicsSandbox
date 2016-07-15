@@ -3,7 +3,7 @@
 
 #include "GraphicsEngine.h"
 
-#include "../Core/Component.h"
+#include <Core/Component.h>
 
 struct TexelPair
 {
@@ -66,6 +66,7 @@ class Sprite : public GraphicsComponent<Sprite>
 
   private:
     glm::vec4 color;
+    float timeSinceAnimationFrameChange;
     
 };
 

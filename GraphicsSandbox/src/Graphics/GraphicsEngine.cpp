@@ -1,12 +1,13 @@
 #include "GraphicsEngine.h"
 #include <SOIL.h>
 #include <glm.hpp>
-#include <gtc\matrix_transform.hpp>
-#include <gtc\type_ptr.hpp>
+#include <gtc/matrix_transform.hpp>
+#include <gtc/type_ptr.hpp>
 
 #include "Sprite.h"
 
-#include "../Core/GameObject.h"
+#include <Core/Component.h>
+#include <Core/GameObject.h>
 
 #define INIT_ERROR(MESSAGE)       \
   {                               \
@@ -74,7 +75,7 @@ void GraphicsEngine::init()
   if (window == nullptr)
     INIT_ERROR_FUNC("Failed to instantiate a window!", glfwTerminate)
 
-    glfwMakeContextCurrent(window);
+  glfwMakeContextCurrent(window);
 
   glewExperimental = GL_TRUE;
   if (glewInit() != GLEW_OK)
@@ -107,7 +108,7 @@ void GraphicsEngine::init()
 
   LoadTexture(std::string("assets/sample.jpg"));
 
-  for (int i = 0; i < 15; ++i)
+  for (int i = 0; i < 5; ++i)
   {
     GameObject *obj = new GameObject;
     ObjectList.push_back(obj);
@@ -121,10 +122,8 @@ void GraphicsEngine::init()
   glGenBuffers(1, &ebo);
 
   glBindVertexArray(vao);
-
   glBindBuffer(GL_ARRAY_BUFFER, vbo);
   glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
-
   glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ebo);
   glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
 

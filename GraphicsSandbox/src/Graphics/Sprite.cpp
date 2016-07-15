@@ -4,19 +4,20 @@ std::string Sprite::name = "Sprite";
 
 Sprite::Sprite() : visible(true), animationActive(true), flipX(false), flipY(false),
   startFrame(0), currentFrame(0), animationSpeed(1), color(glm::vec4(1.0f, 1.0f, 1.0f, 1.0f)),
-  spriteSource(nullptr)
+  spriteSource(nullptr), timeSinceAnimationFrameChange(0.0f)
 {
   shader = gGraphics->LoadShader();
 }
 
 Sprite::Sprite(Texture *textureSource) : visible(true), animationActive(true), flipX(false), flipY(false),
   startFrame(0), currentFrame(0), animationSpeed(1), color(glm::vec4(1.0f, 1.0f, 1.0f, 1.0f)),
-  spriteSource(textureSource)
+  spriteSource(textureSource), timeSinceAnimationFrameChange(0.0f)
 {
 }
 
 Sprite::Sprite(std::string& textureName) : visible(true), animationActive(true), flipX(false), flipY(false),
-  startFrame(0), currentFrame(0), animationSpeed(1), color(glm::vec4(1.0f, 1.0f, 1.0f, 1.0f))
+  startFrame(0), currentFrame(0), animationSpeed(1), color(glm::vec4(1.0f, 1.0f, 1.0f, 1.0f)),
+  timeSinceAnimationFrameChange(0.0f)
 {
   SetTexture(textureName);
 }

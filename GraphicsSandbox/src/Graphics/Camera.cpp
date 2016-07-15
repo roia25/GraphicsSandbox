@@ -1,6 +1,6 @@
 #include "Camera.h"
-#include <GL\glew.h>
-#include <gtc\matrix_transform.hpp>
+#include <GL/glew.h>
+#include <gtc/matrix_transform.hpp>
 
 #define CALC_CAM_MAT() \
 float widthDiv2 = size / 2.0f; \
